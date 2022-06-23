@@ -13,10 +13,13 @@ class Solution:
             else:
                 counts[s[i]] = 1
                 
+
+                
+        for i in range(len(t)):
             if t[i] in counts.keys():
                 counts[t[i]] -= 1
             else:
-                counts[t[i]] = -1
+                return False
                 
         for i in counts.keys():
             if counts[i] != 0:
