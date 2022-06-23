@@ -5,15 +5,17 @@ class Solution:
             return n
         
         
-        num_steps = [0] * n
-        num_steps[0] = 1
-        num_steps[1] = 2
+        first = 1
+        second = 2
+        temp = second
         
         # num of ways to reach top = sum of two prev step counts
         for i in range(2, n):
-            num_steps[i] = num_steps[i-1] + num_steps[i-2]
+            temp = first + second
+            first = second
+            second = temp
             
-        return num_steps[-1]
+        return temp
         
         
 
