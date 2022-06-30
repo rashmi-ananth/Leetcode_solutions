@@ -19,12 +19,3 @@ class Solution:
         return left == right
                 
         
-        
-        
-        # [1,-1,2]
-        # l=1
-        # r= total - nums[0] = 2
-        # check if equal
-        # if not equal: 
-        #     left += curr val
-        #     right -= next val
