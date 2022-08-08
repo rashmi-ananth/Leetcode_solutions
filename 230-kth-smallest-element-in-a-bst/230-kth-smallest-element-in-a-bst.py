@@ -13,6 +13,8 @@ class Solution:
             if root.left != None:
                 dfs(root.left)
             lst.append(root.val)
+            if len(lst) == k:
+                return
             if root.right != None:
                 dfs(root.right)
                 
