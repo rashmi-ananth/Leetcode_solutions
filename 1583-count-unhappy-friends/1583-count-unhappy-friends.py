@@ -21,8 +21,8 @@ class Solution:
                 paired_v_idx = preferences[val].index(pairings[val])
                 
                 if j < idx_paired and curr_idx < paired_v_idx:
-                  
                     unhappy.add(i)
+                    break
         
         return len(unhappy)
                     
