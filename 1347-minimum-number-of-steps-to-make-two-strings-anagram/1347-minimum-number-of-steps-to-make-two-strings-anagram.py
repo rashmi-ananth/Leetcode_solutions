@@ -5,8 +5,7 @@ class Solution:
         
         s_counter = Counter(s)
         t_counter = Counter(t)
-        
-        print(s_counter, t_counter)
+    
         
         answer = 0
         for i in s_counter.keys():
