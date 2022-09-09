@@ -12,29 +12,33 @@ class Solution:
     def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
         
         if not head:
-            return
+            return None
         
-        pseudoHead = Node(0,None,head, None)
-        prev = pseudoHead
-        
-        stack = []
-        stack.append(head)
+        pseudoprev = Node(0,None,head,None)
+        prev = pseudoprev
+        stack = [head]
         
         while stack:
             curr = stack.pop()
-            prev.next = curr
-            curr.prev = prev
             
+            
+            curr.prev = prev
+            prev.next = curr
+            
+   
             if curr.next:
                 stack.append(curr.next)
                 
             if curr.child:
                 stack.append(curr.child)
-            curr.child = None
+                curr.child = None
+            
             prev = curr
-         
-        pseudoHead.next.prev = None
-        return pseudoHead.next
+            
+        pseudoprev.next.prev = None
+        return pseudoprev.next
+        
+       
         
             
         
