@@ -21,5 +21,4 @@ class Solution:
         
         return return_lst
         
-        # 2 2
         
