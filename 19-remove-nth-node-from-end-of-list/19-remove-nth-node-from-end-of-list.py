@@ -13,6 +13,7 @@ class Solution:
             # node of the list
         # switch pointers to remove nth node
         
+    
         counter = 0
         while curr != None:
             curr = curr.next
@@ -23,8 +24,7 @@ class Solution:
         ptr2 = head.next
         
         desired_node = counter - n
-        
-        
+
         if desired_node == 0:
             ptr1.next = None
             return ptr2
