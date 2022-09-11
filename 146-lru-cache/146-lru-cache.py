@@ -45,7 +45,6 @@ class LRUCache:
 
     def put(self, key: int, value: int) -> None:
         
-
         # if in dictionary
         if key in self.dictionary.keys():
             
@@ -78,7 +77,6 @@ class LRUCache:
             # adding new node
             new_node = Node(None, key, value, None)
             self.add_node(new_node)
-            self.MRU.prev = new_node
             self.dictionary[key] = new_node
             
 
