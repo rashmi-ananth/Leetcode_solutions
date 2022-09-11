@@ -12,8 +12,7 @@ class Solution:
         
         while counter > 1:
             idx += k - 1
-            if idx > n - 1:
-                idx = (idx % n)
+            idx = (idx % n)
                 
             lst.remove(lst[idx])
             counter -= 1
