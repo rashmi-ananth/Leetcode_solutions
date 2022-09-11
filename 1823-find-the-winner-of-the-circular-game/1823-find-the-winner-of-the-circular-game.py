@@ -15,7 +15,7 @@ class Solution:
             if idx > n - 1:
                 idx = (idx % n)
                 
-            lst.pop(idx)
+            lst.remove(lst[idx])
             counter -= 1
             n = counter
             
