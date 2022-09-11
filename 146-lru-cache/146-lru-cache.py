@@ -30,12 +30,7 @@ class LRUCache:
             temp.prev = node.prev
             
             # add curr node to front
-            temp2 = self.MRU.prev
-            temp2.next = node
-            node.prev = temp2
-            node.next = self.MRU
-            self.MRU.prev = node
-
+            self.add_node(node)
             return self.dictionary[key].val
         else:
             return -1
@@ -64,11 +59,7 @@ class LRUCache:
             
             # add curr node to front
             self.add_node(node)
-            # temp2 = self.MRU.prev
-            # temp2.next = node
-            # node.prev = temp2
-            # node.next = self.MRU
-            # self.MRU.prev = node
+            
         # if NOT in dictionary
         else:
             # if exceeds limit
@@ -87,10 +78,6 @@ class LRUCache:
             # adding new node
             new_node = Node(None, key, value, None)
             self.add_node(new_node)
-            # temp = self.MRU.prev
-            # temp.next = new_node
-            # new_node.prev = temp
-            # new_node.next = self.MRU
             self.MRU.prev = new_node
             self.dictionary[key] = new_node
             
