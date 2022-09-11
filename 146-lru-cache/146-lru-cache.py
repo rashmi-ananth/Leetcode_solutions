@@ -6,12 +6,8 @@ class Node:
         self.val = val
         self.next = next
 
-#         LRU <-> MRU
-        
-#         counter = 1
-#         {2:node(2,1)}
-        
 class LRUCache:
+
 
     def __init__(self, capacity: int):
         self.dictionary = defaultdict(int)
@@ -21,65 +17,64 @@ class LRUCache:
         self.MRU.prev = self.LRU
         self.capacity = capacity
         self.counter = 0
+    
         
     def get(self, key: int) -> int:
-        # print(key)
-        # print(self.dictionary.items())
-        # curr = self.LRU
-        # while curr != None:
-        #     print(curr.key, curr.val)
-        #     curr = curr.next
+
         if key in self.dictionary.keys():
-            # print(self.counter)
+
+            # remove curr node
             node = self.dictionary[key]
-            # print(key)
-            # print("node key")
-            # print(node.key)
             temp = node.next
             node.prev.next = temp
             temp.prev = node.prev
             
+            # add curr node to front
             temp2 = self.MRU.prev
             temp2.next = node
             node.prev = temp2
             node.next = self.MRU
             self.MRU.prev = node
-            # print('hello')
-            # print(self.MRU.prev.key)
-     
+
             return self.dictionary[key].val
         else:
             return -1
         
 
-        
+    def add_node(self, node):
+        temp = self.MRU.prev
+        temp.next = node
+        node.prev = temp
+        node.next = self.MRU
+        self.MRU.prev = node    
 
     def put(self, key: int, value: int) -> None:
-        # print(key, value)
-        # print(self.dictionary.items())
-        # curr = self.LRU
-        # while curr != None:
-        #     print(curr.key, curr.val)
-        #     curr = curr.next
+        
 
+        # if in dictionary
         if key in self.dictionary.keys():
+            
+            # update curr node val
+            # remove curr node
             self.dictionary[key].val = value
             node = self.dictionary[key]
             temp = node.next
             node.prev.next = temp
             temp.prev = node.prev
             
-            temp2 = self.MRU.prev
-            temp2.next = node
-            node.prev = temp2
-            node.next = self.MRU
-            self.MRU.prev = node
+            # add curr node to front
+            self.add_node(node)
+            # temp2 = self.MRU.prev
+            # temp2.next = node
+            # node.prev = temp2
+            # node.next = self.MRU
+            # self.MRU.prev = node
+        # if NOT in dictionary
         else:
+            # if exceeds limit
             if self.counter == self.capacity:
                 
-                # removing old LRU node
-                # print(self.LRU.next.key)
-                
+                # remove LRU node
                 temp = self.LRU.next
                 self.LRU.next = temp.next
                 temp.next.prev = self.LRU
@@ -91,15 +86,17 @@ class LRUCache:
                 
             # adding new node
             new_node = Node(None, key, value, None)
-            temp = self.MRU.prev
-            temp.next = new_node
-            new_node.prev = temp
-            new_node.next = self.MRU
+            self.add_node(new_node)
+            # temp = self.MRU.prev
+            # temp.next = new_node
+            # new_node.prev = temp
+            # new_node.next = self.MRU
             self.MRU.prev = new_node
             self.dictionary[key] = new_node
-        # print(self.dictionary)
-                
+            
 
+
+            
                 
             
 
