@@ -6,9 +6,7 @@ class Solution:
         check = False
         if x < 0:
             check = True
-            
-        # 123
-        # 0
+
         
         new_int = 0
         factor = 10
