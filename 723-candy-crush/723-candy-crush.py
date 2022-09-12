@@ -43,47 +43,5 @@ class Solution:
             return self.candyCrush(board)  
         return board
         
-         
-        
-#         for i in range(len(board) -1, -1, -1):
-           
-#             location = len(board) - 1
-
-#             print()
-#             # print(board[i])
-#             # print(board[0][i])
-#             for j in range(len(board)):
-                
-#                 # print(board[j][i])
-#                 print(j, location, i)
-#             #    print(board[j][location], board[j][i], location)
-#                 if board[j][i] > 0:
-                    
-#                     board[j][location] = board[j][i]
-#                     location -= 1
-                    
-                    
-                    
-                
-                    
-                    
-                    
-#         0   0   0   0   -5   211 311 211 311  411
-        
-        
-        # curr_idx = 4
-        # location = 6
-        # if board[cirr_idx] > 0: 
-        #     board[location] = board[cirr_idx]
-        #     location -= 1
-        #     cirr_idx -= 1
-        # else:
-        #     cirr_idx -= 1
-            
-            
-                    
-        for i in range(len(board)):
-            print(board[i])
-         
                 
         
