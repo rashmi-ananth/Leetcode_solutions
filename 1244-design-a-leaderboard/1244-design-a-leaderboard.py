@@ -3,16 +3,29 @@ class Leaderboard:
 
     def __init__(self):
         self.dictionary = defaultdict(int)
+        
     
     def addScore(self, playerId: int, score: int) -> None:
         self.dictionary[playerId] += score
  
     def top(self, K: int) -> int:
-   
-        sorted_items = sorted(self.dictionary.items(), key=lambda x: -x[1])[:K]
+        h = []
+        idx = 0
+        items_lst = list(self.dictionary.items())
+        for key, value in items_lst:
+            heappush(h, (value, key))
+            idx += 1
+            if idx == K:
+                break
+        while idx < len(items_lst):
+            if items_lst[idx][1] > h[0][0]:
+                heappop(h)
+                heappush(h, (items_lst[idx][1], items_lst[idx][0]))
+            idx += 1
+
         total = 0
         for i in range(K):
-            total += sorted_items[i][1]
+            total += h[i][0]
         return total
 
     def reset(self, playerId: int) -> None:
