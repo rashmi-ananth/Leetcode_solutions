@@ -6,10 +6,11 @@ class SparseVector:
 
     # Return the dotProduct of two sparse vectors
     def dotProduct(self, vec: 'SparseVector') -> int:
-        dot_arr = []
+        total = 0
         for i in range(len(self.nums)):
-            dot_arr.append(self.nums[i] * vec.nums[i])
-        return sum(dot_arr)
+         
+            total += self.nums[i] * vec.nums[i]
+        return total
             
         
         
