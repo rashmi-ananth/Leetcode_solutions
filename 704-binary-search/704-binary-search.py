@@ -5,16 +5,14 @@ class Solution:
         def binary_search(l,r):
             
             mid = (l + r) // 2
-            
             if nums[mid] == target:
                 return mid
             if l == r:
                 return -1
             if nums[mid] < target:
                 return binary_search(mid + 1,r)
-            if nums[mid] > target:
-                return binary_search(l,mid)
- 
+
+            return binary_search(l,mid)
  
 
         return binary_search(0,len(nums) - 1)
