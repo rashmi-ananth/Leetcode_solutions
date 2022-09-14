@@ -6,16 +6,16 @@
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
 
-        curr = ListNode(-1, None)
+        dummy_node = ListNode(-1, None)
         carry = 0
-        dummy_node = curr
+        curr = dummy_node
         
         while l1 != None and l2 != None:
             
             total = l1.val + l2.val + carry
-            dummy_node.next = ListNode(total % 10, None)
+            curr.next = ListNode(total % 10, None)
             carry = total // 10
-            dummy_node = dummy_node.next
+            curr = curr.next
             
             l1 = l1.next
             l2 = l2.next
@@ -23,9 +23,9 @@ class Solution:
         if l1 != None:
             while l1 != None:
                 total = l1.val + carry
-                dummy_node.next = ListNode(total % 10, None)
+                curr.next = ListNode(total % 10, None)
                 carry = total // 10
-                dummy_node = dummy_node.next
+                curr = curr.next
 
                 l1 = l1.next
 
@@ -33,15 +33,15 @@ class Solution:
         if l2 != None:
             while l2 != None:
                 total = l2.val + carry
-                dummy_node.next = ListNode(total % 10, None)
+                curr.next = ListNode(total % 10, None)
                 carry = total // 10
-                dummy_node = dummy_node.next
+                curr = curr.next
 
                 l2 = l2.next
         if carry:
-            dummy_node.next = ListNode(carry, None)
+            curr.next = ListNode(carry, None)
             
-        return curr.next  
+        return dummy_node.next  
         
         
       
