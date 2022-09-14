@@ -5,10 +5,7 @@
 #         self.next = next
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        
-        4831
-        251
-        635
+
         curr = ListNode(-1, None)
         carry = 0
         dummy_node = curr
