@@ -31,7 +31,7 @@ class Solution:
             
         return dummy.next
     
-        # Time: O(N)
+        # Time: O(M + N)
         # Space: O(1)
   
             
