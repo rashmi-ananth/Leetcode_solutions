@@ -16,15 +16,20 @@ class Solution:
             nonlocal min_val
             nonlocal curr_target
             
-            if abs(root.val - target) < min_val:
+            difference = abs(root.val - target)
+            if  difference < min_val:
                 curr_target = root.val
-                min_val = abs(root.val - target)
-
-            if root.left != None:
+                min_val = difference
+                
+                
+            if root.val > target and root.left:
                 dfs(root.left)
-            
-            if root.right != None:
+                
+            if root.val < target and root.right:
                 dfs(root.right)
+                
+
+
             
 
         
