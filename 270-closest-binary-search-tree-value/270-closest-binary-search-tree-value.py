@@ -7,32 +7,27 @@
 class Solution:
     def closestValue(self, root: Optional[TreeNode], target: float) -> int:
         
+        # TC: O(H) = height of tree ~ O(logN)
         
-        
-        min_val = float('inf')
         curr_target = root.val
         
         def dfs(root):
-            nonlocal min_val
             nonlocal curr_target
             
+            if root == None:
+                return
+            
             difference = abs(root.val - target)
-            if  difference < min_val:
+            if  difference < abs(curr_target - target):
                 curr_target = root.val
                 min_val = difference
-                
-                
-            if root.val > target and root.left:
-                dfs(root.left)
-                
-            if root.val < target and root.right:
+                   
+            if root.val > target:
+                dfs(root.left) 
+            else:
                 dfs(root.right)
                 
 
-
-            
-
-        
         dfs(root)
         return curr_target
     
