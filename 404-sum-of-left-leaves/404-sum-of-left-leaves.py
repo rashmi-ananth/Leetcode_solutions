@@ -7,6 +7,7 @@
 class Solution:
     def sumOfLeftLeaves(self, root: Optional[TreeNode]) -> int:
         
+        # TC: O(N)
         total = 0
         def dfs(root):
             nonlocal total
