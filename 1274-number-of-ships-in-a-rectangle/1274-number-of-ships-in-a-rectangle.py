@@ -31,12 +31,6 @@ class Solution:
         return (self.countShips(sea, Point(midX, midY), bottomLeft)) + (self.countShips(sea, Point(midX, topRight.y), Point(bottomLeft.x, midY + 1)))  + (self.countShips(sea,topRight, Point(midX + 1, midY + 1))) + (self.countShips(sea,Point(topRight.x, midY), Point(midX + 1, bottomLeft.y)))
         
         
-       #         (midX, topRight[1]), (bottomLeft[0], midY)
-#         (topRight[0], midY), (midX, bottomLeft[1])
-#         (0,0) (1,1)
-#         .   .  
-#         .   .
-        
         
         
         
