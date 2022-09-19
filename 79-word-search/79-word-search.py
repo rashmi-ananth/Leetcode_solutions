@@ -17,7 +17,7 @@ class Solution:
                     visited.add((i, j))
                     if dfs(board, i+x, j+y, visited, k+1):
                         return True
-                visited.remove((i, j))
+                    visited.remove((i, j))
             return False  
    
         for i in range(len(board)):
