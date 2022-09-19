@@ -10,6 +10,8 @@ class Solution:
         # go to middle node
         # delete middle node
         
+        # TC: O(N)
+        
         counter = 0
         curr = head 
         
