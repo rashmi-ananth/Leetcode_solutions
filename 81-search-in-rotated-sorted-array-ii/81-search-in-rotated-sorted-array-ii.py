@@ -1,8 +1,6 @@
 class Solution:
     def search(self, nums: List[int], target: int) -> bool:
-        
-        
-        6,7,0,1,2,3,4,5
+
         
         l = 0
         r = len(nums) - 1
