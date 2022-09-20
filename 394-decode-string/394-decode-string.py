@@ -1,45 +1,56 @@
 class Solution:
     def decodeString(self, s: str) -> str:
         
-        # creating a stack
-        # add char to stack
-        # if char == ]: pop off all chars until numbers
-        # add new (reversed) char to stack and continue
         
+        # stack to iterate through values
+        # if find ']' then pop and get number and entire str
+        # add it back to stack
+        # join all strings
         
-        stack = []
-        i = 0
-        while i < len(s):
-            if s[i] != ']':
-                stack.append(s[i])
-                i += 1
-                continue
-            val = stack.pop()
-            string = []
-            while val != '[':
-                string.append(val)
-                val = stack.pop()
-            
-            val2 = stack.pop()
-            number = 0
-            factor = 1
-            while val2.isdigit():
-                number += (int(val2) * factor) 
-                factor = factor * 10
-                if stack and stack[-1].isdigit():
-                    val2 = stack.pop()
-                else:
-                    break
-            string.reverse()
-            new_string = string * number
-            result_string = ''.join(new_string)
-            stack.append(result_string)
-            i += 1
-         
-        return ''.join(stack)
  
-     
+        stack = []
+        idx = 0
+        
+        while idx < len(s):
+            if s[idx] != ']':
+                stack.append(s[idx])
+                idx += 1
+            else:
+                # pop all chars
+                char_lst = []
+                temp = stack.pop()
+                
+                while len(temp) > 0 and temp != '[':
+                    char_lst.append(temp)
+                    temp = stack.pop()
+                char_lst.reverse()
+                temp_string = ''.join(char_lst)
+
+                # pop all numbers
+   
+                val = stack.pop()
+                integer = 0
+                factor = 1
+                while val.isnumeric():
+                    integer += (factor * int(val))
+                    factor *= 10
+                    if len(stack) > 0:
+                        val = stack.pop()
+                    else:
+                        break
+                if not val.isnumeric():
+                    stack.append(val)
+                new_string = temp_string * integer
+
+                stack.append(new_string)
+                idx += 1
+        
+        
+        return ''.join(stack)
+                
+                
+                
                 
             
-            
-        
+    
+    
