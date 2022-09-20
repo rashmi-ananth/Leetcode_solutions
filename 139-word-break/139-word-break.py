@@ -15,9 +15,7 @@ class Solution:
                     
         return dp[len(s)]
             
-    
-    
-        #   1   0   1   0   0   0   0   0   0   0
+
             
             
             
