@@ -4,7 +4,6 @@ class Solution:
         
         sorted_intervals = sorted(intervals, key = lambda x:(x[1]))
         
-        print(sorted_intervals)
         
         end = sorted_intervals[0][1]
         count = 1
