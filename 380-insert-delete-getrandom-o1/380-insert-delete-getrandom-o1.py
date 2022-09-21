@@ -16,7 +16,12 @@ class RandomizedSet:
 
     def remove(self, val: int) -> bool:
         if val in self.dictionary.keys():
-            self.list.remove(val)
+            idx = self.dictionary[val]
+            self.list[idx] = self.list[-1]
+            self.dictionary[self.list[idx]] = idx
+            self.list[-1] = val
+            self.list.pop()
+
             del self.dictionary[val]
             return True
         return False
