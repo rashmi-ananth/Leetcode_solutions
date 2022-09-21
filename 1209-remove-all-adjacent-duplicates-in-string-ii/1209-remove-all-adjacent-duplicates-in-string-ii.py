@@ -2,7 +2,7 @@ class Solution:
     def removeDuplicates(self, s: str, k: int) -> str:
       
     
-#     deeedbbcccbdaa
+#     O(2N)  = O(N)
 
 
         char_stack = []
