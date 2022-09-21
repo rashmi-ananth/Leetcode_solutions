@@ -17,13 +17,11 @@ class Solution:
                 curr = curr.left
 
             if len(stack) > 0:
-                node = stack.pop()
-                lst.append(node.val)
+                curr = stack.pop()
+                lst.append(curr.val)
             if len(lst) == k:
                 return lst[-1]
-            
-            
-            curr = node.right
+            curr = curr.right
                 
 
             
