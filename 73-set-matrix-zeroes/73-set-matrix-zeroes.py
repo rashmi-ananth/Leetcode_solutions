@@ -3,70 +3,62 @@ class Solution:
         """
         Do not return anything, modify matrix in-place instead.
         """
+#         1   0   1
+#         1   0   1
+#         1   1   1
         
-        col = False
-        row = False
-        for i in range(len(matrix[0])):
-            if matrix[0][i] == 0:
-                row = True
-                break
-                
+#         0   0   0
+#         0   0   0
+#         1   0   1
+
+
+        # check if first row/col has any zeros
+        col_check = False
         for i in range(len(matrix)):
             if matrix[i][0] == 0:
-                col = True
-            for j in range(len(matrix[0])):
-                if matrix[i][j] == 0:
-                    matrix[i][0] = 0
-                    matrix[0][j] = 0
-
+                col_check = True
+                break
+        row_check = False
+        for j in range(len(matrix[0])):
+            if matrix[0][j] == 0:
+                row_check = True
+                break   
+       
+    
         for i in range(1, len(matrix)):
             for j in range(1, len(matrix[0])):
-                if matrix[i][0] == 0 or matrix[0][j] == 0:
+                if matrix[i][j] == 0:
+                    matrix[0][j] = 0
+                    matrix[i][0] = 0
+                    
+        for i in range(1, len(matrix)):
+            for j in range(1, len(matrix[0])):
+                if matrix[0][j] == 0 or matrix[i][0] == 0:
                     matrix[i][j] = 0
+   
+        
+        # update first row/col
+        if col_check:
+            for i in range(len(matrix)):
+                matrix[i][0] = 0
 
+        if row_check:
+            for j in range(len(matrix[0])):
+                matrix[0][j] = 0
 
-        if row:
-            for i in range(len(matrix[0])):
-                matrix[0][i] = 0
-        if col:
-            for j in range(len(matrix)):
-                matrix[j][0] = 0
-            
-                    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
         
-  
-                    
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-#         zero_rows = set()
-#         zero_cols = set()
-        
-#         for i in range(len(matrix)):
-#             for j in range(len(matrix[0])):
-                
-#                 if matrix[i][j] == 0:
-#                     zero_rows.add(i)
-#                     zero_cols.add(j)
-                    
-#         for i in range(len(matrix)):
-#             for j in range(len(matrix[0])):
-#                 if i in zero_rows or j in zero_cols:
-#                     matrix[i][j] = 0
-                
-                
+
         
         
