@@ -9,25 +9,44 @@ class Solution:
         
         lst = []
         
-        def dfs(node):
+        1
+        stack = []
+        curr = root
+        while True:
             
-            if node.left != None:
-                dfs(node.left)
-            
-            
-            lst.append(node.val)
+            while curr != None:
+                stack.append(curr)
+                curr = curr.left
 
-            if node.right != None:
-                dfs(node.right)
+            if len(stack) > 0:
+                node = stack.pop()
+                lst.append(node.val)
+            if len(lst) == k:
+                return lst[-1]
+            
+            if node != None:
+                curr = node.right
+                
+
+            
+            
+        
+   
+        
+#         def dfs(node):
+            
+#             if node.left != None:
+#                 dfs(node.left)
+
+#             lst.append(node.val)
+#             if node.right != None:
+#                 dfs(node.right)
             
           
-        dfs(root)
-        return lst[k -1]
+#         dfs(root)
+#         return lst[k -1]
         
-        
-        
-        
-        
+   
         
         
         
