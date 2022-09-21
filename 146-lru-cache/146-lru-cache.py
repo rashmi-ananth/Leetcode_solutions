@@ -57,18 +57,17 @@ class LRUCache:
             self.add_node(node)
         
         # if key not in dict and c < c
-        elif self.counter < self.capacity:
+        else: 
+            if self.counter < self.capacity:
                
-            self.counter += 1   
-            node = Node(None, key, value, None)
-            self.add_node(node)
-            self.dictionary[key] = node 
-        else:
-            temp = self.LRU.next
-            self.LRU.next = temp.next
-            temp.next.prev = self.LRU
-            del self.dictionary[temp.key]
-            
+                self.counter += 1   
+
+            else:
+                temp = self.LRU.next
+                self.LRU.next = temp.next
+                temp.next.prev = self.LRU
+                del self.dictionary[temp.key]
+
         
             node = Node(None, key, value, None)
             self.add_node(node)
