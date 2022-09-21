@@ -2,7 +2,7 @@ class Solution:
     def minAvailableDuration(self, slots1: List[List[int]], slots2: List[List[int]], duration: int) -> List[int]:
         
         
-        
+        # O(N + M)
         
         slots1.sort()
         slots2.sort()
@@ -23,12 +23,3 @@ class Solution:
         
         return []
             
-            
-        
-        
-#         [10,50],[60,120],[140,210]
-#         [0,15],[60,70] 
-        
-        
-#         min(end) - max(start) >= duration
-        
