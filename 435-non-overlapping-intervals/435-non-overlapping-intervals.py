@@ -3,9 +3,6 @@ class Solution:
         
         
         intervals.sort()
-        print(intervals)
-    
-            
         prev = intervals[0]
         counter = 0
         for i in range(1, len(intervals)):
