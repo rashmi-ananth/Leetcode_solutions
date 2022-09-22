@@ -2,55 +2,30 @@ import numpy as np
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
         
-        
-        total_sum = sum(nums)
-
-        # if total_sum is odd, it cannot be partitioned into equal sum subsets
-        if total_sum % 2 != 0:
+        if sum(nums) % 2 != 0:
             return False
-        subset_sum = total_sum // 2
-        n = len(nums)
-
-        # construct a dp table of size (n+1) x (subset_sum + 1)
-       # dp = np.zeros((len(nums), subset_sum + 1))
+        if len(nums) == 1:
+            return False
+        
+        target_sum = sum(nums) // 2
+        #dp = np.zeros((len(nums), target_sum + 1))
         dp = []
         for i in range(len(nums)):
-            dp.append([0] * (subset_sum + 1))
-        dp[0][0] = True
-        # print(dp)
-        
-        for i in range(1, n):
-            curr = nums[i - 1]
-            for j in range(subset_sum + 1):
-                if j < curr:
-                    dp[i][j] = dp[i - 1][j]
-                else:
-                    dp[i][j] = dp[i - 1][j] or dp[i - 1][j - curr]
-        return dp[-1][-1] == 1
-        
-        
-#         if sum(nums) % 2 != 0:
-#             return False
-#         if len(nums) == 1:
-#             return False
-        
-#         target_sum = sum(nums) // 2
-#         dp = np.zeros((len(nums), target_sum + 1))
-#         if nums[0] <= target_sum:
-#             dp[0][nums[0]] = 1
-#         dp[0][0] = True
+            dp.append([0] * (target_sum + 1))
+        if nums[0] <= target_sum:
+            dp[0][nums[0]] = 1
+        dp[0][0] = 1
  
-#         for i in range(1, len(dp)):
-#             for j in range(1, len(dp[0])):
-                
-#                 if j < nums[i]:
-#                     dp[i][j] = dp[i-1][j]
-#                 else:
-#                     dp[i][j] = max(dp[i-1][j - nums[i]], dp[i-1][j])
+        for i in range(1, len(dp)):
+            for j in range(1, len(dp[0])):
+                if j < nums[i]:
+                    dp[i][j] = dp[i-1][j]
+                else:
+                    dp[i][j] = max(dp[i-1][j - nums[i]], dp[i-1][j])
                     
          
  
-#         return dp[-1][-1] == 1
+        return dp[-1][-1] == 1
                     
                 
         #     0   1   2   3   4
