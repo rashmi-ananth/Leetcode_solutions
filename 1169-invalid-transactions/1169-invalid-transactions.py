@@ -1,42 +1,34 @@
 class Solution:
     def invalidTransactions(self, transactions: List[str]) -> List[str]:
         
-        ans, dict1 = set(), defaultdict(set)
-        for i, info in enumerate(transactions):
-            name, time, amount, city = info.split(',')
-            if int(amount) > 1000:
-                ans.add(i)
+        names = defaultdict(list)
+        arr = []
+        invalid = set()
+        for i in transactions:
+            arr.append(i.split(','))
+        
+        for i in range(len(arr)):
+            if int(arr[i][2]) > 1000:
+                invalid.add(','.join(arr[i]))
                 
-            for j, t, c in dict1[name]:
-                if city != c and abs(t - int(time)) <= 60:
-                    ans.add(j)
-                    ans.add(i)
+            city = arr[i][-1]
+            time = int(arr[i][1])
+            for j in range(len(names[arr[i][0]])):
+                if city != names[arr[i][0]][j][-1] and abs(time - int(names[arr[i][0]][j][1])) <= 60:
                     
-            dict1[name].add((i, int(time), city))
-        
+                    invalid.add(','.join(arr[i]))
+                    invalid.add(','.join(names[arr[i][0]][j]))
+                    
+                
+                
+            names[arr[i][0]].append(arr[i])
+         
         return_lst = []
-        for i in ans:
-            return_lst.append(transactions[i])
-                    
+        
+        for i in transactions:
+            if i in invalid:
+                return_lst.append(i)
+                
         return return_lst
-        
-        
-        
-        
-
-#         for i, inf in enumerate(transactions):
-#             name, time, amount, city = inf.split(",")
-
-#             if int(amount) > 1000:
-#                 ans.add(i)
-
-#             for j, t, c in dict1[name]:
-#                 if c != city and abs(int(t) - int(time)) <= 60:
-#                     ans.add(j)
-#                     ans.add(i)
-
-#             dict1[name].add((i, time, city))
-
-#         return [transactions[i] for i in ans]
                 
             
