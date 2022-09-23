@@ -3,11 +3,10 @@ class Solution:
         
         arr = [None] * (len(s) + 1)
         arr[0] = [[]]
-        wordSet = set(wordDict)
         
         for i in range(len(s) + 1):
             if arr[i] != None:
-                for word in wordSet:
+                for word in wordDict:
                     if i + len(word) <= len(s) and s[i: i + len(word)] == word:
                         for k in arr[i]:
                             if arr[i+len(word)] == None:
