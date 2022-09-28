@@ -1,30 +1,48 @@
 class UndergroundSystem:
 
     def __init__(self):
-        
         self.check_in_dict = dict()
-        self.trips_dict = dict()
+        self.paths = dict()
         
 
     def checkIn(self, id: int, stationName: str, t: int) -> None:
-        self.check_in_dict[id] = (stationName, t)
+        self.check_in_dict[id] = [stationName, t]
+        
 
     def checkOut(self, id: int, stationName: str, t: int) -> None:
-        start_station = self.check_in_dict[id][0]
-        total_time = t - self.check_in_dict[id][1]
-        if (start_station, stationName) in self.trips_dict.keys():
-            new_tuple = (self.trips_dict[(start_station, stationName)][0] + total_time, 1 + self.trips_dict[(start_station, stationName)][1])
-            self.trips_dict[(start_station, stationName)] = new_tuple
-            
-        else:
-            self.trips_dict[(start_station, stationName)] = (total_time, 1)
-            
+        start = self.check_in_dict[id][0]
+        start_time = self.check_in_dict[id][1]
+        difference = t - start_time
         
+        if (start, stationName) in self.paths.keys():
+            self.paths[(start, stationName)][0] += difference
+            self.paths[(start, stationName)][1] += 1
+        else:
+            self.paths[(start, stationName)] = [difference, 1]
+            
 
     def getAverageTime(self, startStation: str, endStation: str) -> float:
+        total, count = self.paths[(startStation, endStation)]
+        return total / count
         
-        avg = self.trips_dict[(startStation, endStation)][0] / self.trips_dict[(startStation, endStation)][1]
-        return avg
+        
+
+ 
+
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
