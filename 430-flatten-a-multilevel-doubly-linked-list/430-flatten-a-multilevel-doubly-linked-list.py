@@ -14,30 +14,50 @@ class Solution:
         if head == None:
             return head
         
-        
-        prev_orig = Node(0, None, head, None)
-        prev = prev_orig
+        dummy = Node(0,None, None, None)
         stack = [head]
+        curr = dummy
         
+        # d->1-2-3-7-11-12
+        # [4 9]
         while len(stack) > 0:
-            curr = stack.pop()
-            prev.next = curr
-            curr.prev = prev
-            if curr.next != None:
-                stack.append(curr.next)
-            if curr.child != None:
-                stack.append(curr.child)
-                
-                curr.child = None
-            prev = curr
-         
-        prev_orig.next.prev = None
-        return prev_orig.next
-        
-        
-        
-      
-       
-        
             
+            node = stack.pop()
+            
+            if node.next != None:
+                stack.append(node.next)
+            if node.child != None:
+                stack.append(node.child)  
+                node.child = None
+            
+            curr.next = node
+            node.prev = curr
+            curr = node
+        
+        
+        dummy.next.prev = None
+        return dummy.next
+            
+
+                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
