@@ -13,22 +13,28 @@
 class Solution:
     def countShips(self, sea: 'Sea', topRight: 'Point', bottomLeft: 'Point') -> int:
         
-        # out of bounds
-      
-        if bottomLeft.x > topRight.x or bottomLeft.y > topRight.y:
-            return 0
-        # no ships
-        if not sea.hasShips(topRight, bottomLeft):
+        if topRight.x < bottomLeft.x or topRight.y < bottomLeft.y:
             return 0
         
-        # base case of len 1
-        if bottomLeft.x == topRight.x and bottomLeft.y == topRight.y:
+        if sea.hasShips(topRight, bottomLeft) == False:
+            return 0
+        
+        if (topRight.x == bottomLeft.x) and (topRight.y == bottomLeft.y):
             return 1
         
-        midX = (bottomLeft.x + topRight.x) // 2
-        midY = (bottomLeft.y + topRight.y) // 2
+        mid_x = (topRight.x + bottomLeft.x) // 2
+        mid_y = (topRight.y + bottomLeft.y) // 2
         
-        return (self.countShips(sea, Point(midX, midY), bottomLeft)) + (self.countShips(sea, Point(midX, topRight.y), Point(bottomLeft.x, midY + 1)))  + (self.countShips(sea,topRight, Point(midX + 1, midY + 1))) + (self.countShips(sea,Point(topRight.x, midY), Point(midX + 1, bottomLeft.y)))
+        return self.countShips(sea, topRight, Point(mid_x +1, mid_y + 1)) + self.countShips(sea, Point(mid_x, mid_y), bottomLeft) + self.countShips(sea, Point(topRight.x, mid_y), Point(mid_x + 1, bottomLeft.y)) + self.countShips(sea, Point(mid_x, topRight.y), Point(bottomLeft.x, mid_y + 1))
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
