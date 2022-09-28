@@ -4,12 +4,12 @@ class Solution:
         row, col = len(board), len(board[0])
         path = set()
         s = ''
-        # for r in range(row):
-        #     for c in range(col):
-        #         s += board[r][c]
-        # for w in word:
-        #     if w not in s:
-        #         return False
+        for r in range(row):
+            for c in range(col):
+                s += board[r][c]
+        for w in word:
+            if w not in s:
+                return False
             
             
         def dfs(r, c, i):
