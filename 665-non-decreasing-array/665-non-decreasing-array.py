@@ -7,7 +7,6 @@ class Solution:
                     nums[i+1] = nums[i]
                     break
                 else:
-                    print(i)
                     nums[i] = nums[i+1]
                     break
          
