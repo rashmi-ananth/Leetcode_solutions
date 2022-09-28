@@ -17,9 +17,7 @@ class Solution:
         dummy = Node(0,None, None, None)
         stack = [head]
         curr = dummy
-        
-        # d->1-2-3-7-11-12
-        # [4 9]
+
         while len(stack) > 0:
             
             node = stack.pop()
