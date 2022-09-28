@@ -12,21 +12,27 @@ class Solution:
                 return False
             
             
-        def dfs(r, c, i):
-            if r < 0 or r >= row or c < 0 or c >= col or board[r][c] != word[i] or (r, c) in path:
+            
+        def dfs(i, j, idx):
+            if i < 0 or i >= len(board) or j < 0 or j >= len(board[0]):
                 return False
-            if board[r][c] == word[i] and i == len(word) - 1:
+            if board[i][j] != word[idx] or (i, j) in path:
+                return False
+            
+            if idx >= len(word) - 1:
                 return True
             
-            path.add((r, c))
-            res = (dfs(r+1, c, i+1) or dfs(r-1, c, i+1) 
-                   or dfs(r, c+1, i+1) or dfs(r, c-1, i+1))
-            path.remove((r, c))
+            path.add((i,j))
+            result = dfs(i+1, j, idx + 1) or dfs(i-1, j, idx + 1) or dfs(i, j+1, idx + 1) or dfs(i, j-1, idx + 1)
             
-            return res
+            path.remove((i,j))
+            return result
+            
+      
         
         for r in range(row):
             for c in range(col):
                 if dfs(r, c, 0):
                     return True
         return False
+    
