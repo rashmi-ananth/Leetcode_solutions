@@ -3,11 +3,11 @@ class RandomizedCollection:
 
     def __init__(self):
         self.list = []
-        self.dictionary = defaultdict(list)
+        self.dictionary = defaultdict(set)
         
 
     def insert(self, val: int) -> bool:
-        self.dictionary[val].append(len(self.list))
+        self.dictionary[val].add(len(self.list))
         self.list.append(val)
         return len(self.dictionary[val]) == 1
         
@@ -19,7 +19,7 @@ class RandomizedCollection:
         idx = self.dictionary[val].pop()
         last = self.list[-1]
         self.list[idx] = last
-        self.dictionary[last].append(idx)
+        self.dictionary[last].add(idx)
         self.dictionary[last].remove(len(self.list) - 1)
         self.list.pop()
         
