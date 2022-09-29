@@ -1,13 +1,5 @@
 class Solution:
     def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
-        
-        # ---------------4
-#             --------------------
-            
-#         ------ ---------4
-        
-#         ------------------
-#             -------4
             
             
         intervals.sort()
