@@ -2,35 +2,34 @@ from random import randint
 class RandomizedSet:
 
     def __init__(self):
-        self.dictionary = dict()
         self.list = []
+        self.dictionary = dict()
         
-
     def insert(self, val: int) -> bool:
         if val in self.dictionary.keys():
             return False
+        
         self.dictionary[val] = len(self.list)
         self.list.append(val)
         return True
         
-
     def remove(self, val: int) -> bool:
-        if val in self.dictionary.keys():
-            idx = self.dictionary[val]
-            self.list[idx] = self.list[-1]
-            self.dictionary[self.list[idx]] = idx
-            self.list[-1] = val
-            self.list.pop()
+        if val not in self.dictionary.keys():
+            return False
+        # remove
+        idx = self.dictionary[val]
+        last_val = self.list[-1]
+        self.list[idx] = last_val
+        self.dictionary[last_val] = idx
+        del self.dictionary[val]
+        self.list.pop()
+        return True
 
-            del self.dictionary[val]
-            return True
-        return False
-        
 
     def getRandom(self) -> int:
-        val = randint(0, len(self.list) -1)
-
+        val = randint(0, len(self.list) - 1)
         return self.list[val]
+        
         
 
 
