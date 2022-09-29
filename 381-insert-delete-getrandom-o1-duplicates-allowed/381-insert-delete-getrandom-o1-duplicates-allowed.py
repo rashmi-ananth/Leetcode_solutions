@@ -13,9 +13,7 @@ class RandomizedCollection:
         
 
     def remove(self, val: int) -> bool:
-        # print('rem')
-        # print(self.list, self.dictionary)
-        if val not in self.dictionary.keys() or len(self.dictionary[val]) == 0:
+        if val not in self.dictionary.keys():
             return False
         
         idx = self.dictionary[val].pop()
@@ -24,7 +22,9 @@ class RandomizedCollection:
         self.dictionary[last].append(idx)
         self.dictionary[last].remove(len(self.list) - 1)
         self.list.pop()
-        # print(self.list, self.dictionary)
+        
+        if len(self.dictionary[val]) == 0:
+            del self.dictionary[val]
         
         return True
         
