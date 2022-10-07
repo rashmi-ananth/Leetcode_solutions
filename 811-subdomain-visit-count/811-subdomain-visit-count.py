@@ -1,6 +1,7 @@
 class Solution:
     def subdomainVisits(self, cpdomains: List[str]) -> List[str]:
         
+        # O(n)
         dictionary = dict()
         for i in range(len(cpdomains)):
             split = cpdomains[i].split(' ')
@@ -13,8 +14,7 @@ class Solution:
                 else:
                     dictionary[join_domain] = integer
                     
-                
-        # print(dictionary)
+ 
         return_lst = []
         for key, value in dictionary.items():
             string = str(value) + " " + key
