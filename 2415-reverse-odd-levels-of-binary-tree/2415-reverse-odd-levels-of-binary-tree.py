@@ -29,34 +29,8 @@ class Solution:
                     
             odd = not odd
             
-            
-#             if not odd:
-#                 node = queue.pop(0)
-#                 if node.left != None:
-#                     queue2.append(node.left)
-#                 if node.right != None:
-#                     queue2.append(node.right)
-                    
-#             else:
-#                 node = queue.pop(0)
-#                 node2 = queue.pop()
-#                 if node.left != None:
-#                     queue2.append(node.left)
-#                 if node.right != None:
-#                     queue2.append(node.right)
-#                 if node2.left != None:
-#                     queue2.append(node2.left)
-#                 if node2.right != None:
-#                     queue2.append(node2.right)
-#                 temp = node.val
-#                 node.val = node2.val
-#                 node2.val = temp
-                
-                
-#             if len(queue) == 0:
-#                 queue = queue2
-#                 queue2 = []
-#                 odd = not odd
+
+ 
                 
                 
         return root
