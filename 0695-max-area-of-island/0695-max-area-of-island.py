@@ -6,24 +6,26 @@ class Solution:
         directions = [(1,0), (0,1), (-1,0), (0,-1)]
         def dfs(i, j, count, visited):
             if i < 0 or j < 0 or i >= len(grid) or j >= len(grid[0]):
-                return count
+                return 0
             
             if (i,j) in visited:
-                return count
+                return 0
             
             visited.add((i,j))
             if grid[i][j] == 0:
-                return count
+                return 0
             
             grid[i][j] = 0
-            count += 1
             
-            max_count = count
-            for x,y in directions:
-                max_count = max(max_count, dfs(i+x, j+y, max_count, visited))
+            return 1 + dfs(i, j+1, max_count, visited) + dfs(i, j-1, max_count, visited) + dfs(i+1, j, max_count, visited) + dfs(i-1, j, max_count, visited)
+
+            
+#             max_count = count
+#             for x,y in directions:
+#                 max_count = max(max_count, dfs(i+x, j+y, max_count, visited))
 
                 
-            return max_count
+#             return max_count
             
 
         
