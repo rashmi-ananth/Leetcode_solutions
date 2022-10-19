@@ -7,6 +7,9 @@
 class Solution:
     def pathSum(self, root: Optional[TreeNode], targetSum: int) -> List[List[int]]:
         
+        # Time: O(N^2)
+        # Space: O(N)
+        
         if root == None:
             return []
         
@@ -20,10 +23,6 @@ class Solution:
                 dfs(root.left, lst + [root.val], total + root.val)
             if root.right != None:
                 dfs(root.right, lst + [root.val], total + root.val)
-            
-            
-
-            
             
             
         dfs(root, [], 0)
