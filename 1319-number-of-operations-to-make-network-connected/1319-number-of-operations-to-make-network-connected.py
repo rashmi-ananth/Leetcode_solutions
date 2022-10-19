@@ -30,9 +30,6 @@ class Solution:
             if i not in visited:
                 dfs(i, visited, adj_lst)
                 count += 1
-                
-        diff = len(connections) - count
-
 
         return count - 1
         
