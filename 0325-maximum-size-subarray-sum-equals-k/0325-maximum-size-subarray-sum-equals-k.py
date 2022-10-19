@@ -1,6 +1,9 @@
 class Solution:
     def maxSubArrayLen(self, nums: List[int], k: int) -> int:
         
+        # Time: O(N)
+        # Space: O(N)
+        
         
         prev_sums = {0:-1}
         curr_sum = 0
