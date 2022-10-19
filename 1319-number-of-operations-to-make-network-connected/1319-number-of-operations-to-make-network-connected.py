@@ -1,6 +1,9 @@
 class Solution:
     def makeConnected(self, n: int, connections: List[List[int]]) -> int:
         
+        # Time: O(M + N)
+        # Space: O(M + N)
+        
         if len(connections) < n-1:
             return -1
         
@@ -29,7 +32,6 @@ class Solution:
                 count += 1
                 
         diff = len(connections) - count
-        print(count, len(connections))
 
 
         return count - 1
