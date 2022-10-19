@@ -1,40 +1,49 @@
 class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
         
-        
-        in_degree = dict()
         adj_lst = dict()
+        indegree = dict()
         
         for i in range(numCourses):
-            in_degree[i] = 0
             adj_lst[i] = []
+            indegree[i] = 0
             
-        for i in range(len(prerequisites)):
-            adj_lst[prerequisites[i][1]].append(prerequisites[i][0])
-            in_degree[prerequisites[i][0]] += 1
-            
+        for i, j in prerequisites:
+            adj_lst[j].append(i)
+            indegree[i] += 1
+         
         queue = []
-        for i in range(len(in_degree)):
-            if in_degree[i] == 0:
+        for i in range(numCourses):
+            if indegree[i] == 0:
                 queue.append(i)
-              
+        
+        order = []
         visited = set()
-        return_lst = []
-        while len(queue) > 0:
+        while len(queue) != 0:
             val = queue.pop(0)
-            visited.add(val)
-            return_lst.append(val)
-   
+            if val not in visited:
+                order.append(val)
+                visited.add(val)
             for i in adj_lst[val]:
-                in_degree[i] -= 1
-                if in_degree[i] == 0 and i not in visited:
+                indegree[i] -= 1
+                if indegree[i] == 0:
                     queue.append(i)
         
-        if len(return_lst) != numCourses:
+        if len(order) != numCourses:
             return []
-        return return_lst
+        return order
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
         
-       
+        
+        
