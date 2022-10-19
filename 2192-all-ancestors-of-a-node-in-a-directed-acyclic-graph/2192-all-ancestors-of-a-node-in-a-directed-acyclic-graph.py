@@ -1,61 +1,44 @@
 class Solution:
     def getAncestors(self, n: int, edges: List[List[int]]) -> List[List[int]]:
         
-        def dfs(i, adj_lst, visited, lst):
-            
-            if i in visited:
-                return lst
-            visited.add(i)
-            lst.append(i)
-            
-            for j in adj_lst[i]:
-                dfs(j, adj_lst, visited, lst)
-                
-            return lst
-            
         
-#         def bfs(i, adj_lst):
+        def dfs(i, visited, adj_lst):
             
-#             queue = [i]
-#             lst = []
-#             visited = set()
+            if i in visited.keys():
+                return visited[i]
             
-#             while len(queue) != 0:
-#                 val = queue.pop(0)
+     
+            for j in adj_lst[i]:
+                visited[i] += [j] + dfs(j, visited, adj_lst)
+            visited[i] = list(set(visited[i]))
                 
-#                 if val not in visited:
-#                     lst.append(val)
-#                 visited.add(val)
-#                 for j in adj_lst[val]:
-#                     queue.append(j)
+            return visited[i]
 
-#             return sorted(lst[1:])
         
         adj_lst = dict()
         for i in range(n):
             adj_lst[i] = []
             
-        for a, b in edges:
-            adj_lst[b].append(a)
+        for i, j in edges:
+            adj_lst[j].append(i)
             
-         
-        ancestors = []
+        visited = defaultdict(list)
         for i in range(n):
-            lst = dfs(i, adj_lst, set(), [])
-            ancestors.append(sorted(lst[1:]))
-            # ancestors.append(bfs(i, adj_lst))
-        
-        return ancestors
-            
+            lst = dfs(i, visited, adj_lst)
 
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+        return_lst = []
+        sorted_keys = sorted(visited)
+        
+        for key in sorted_keys:
+            visited[key].sort()
+            return_lst.append(visited[key])
             
+        return return_lst
+            
+        
+        
+        
+        
+        
+        
+        
