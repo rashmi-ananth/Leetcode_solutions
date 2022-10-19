@@ -8,26 +8,20 @@
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         
-        if not root:
+        if root == None:
             return None
         
-     
-        if root.val == p.val or root.val == q.val:
+        if root == p or root == q:
             return root
         
-
-        val1 = self.lowestCommonAncestor(root.left, p, q)
-
-        val2 = self.lowestCommonAncestor(root.right, p, q)
+        node1 =  self.lowestCommonAncestor(root.left, p, q)
+        node2 =  self.lowestCommonAncestor(root.right, p, q)
         
-        
-        if val1 != None and val2 != None:
+        if node1 != None and node2 != None:
             return root
-        elif val1 != None:
-            return val1
+        if node1 != None:
+            return node1
         else:
-            return val2
-        
-        
+            return node2
         
         
