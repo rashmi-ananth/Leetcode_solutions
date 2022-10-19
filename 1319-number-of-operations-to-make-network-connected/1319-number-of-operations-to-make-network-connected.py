@@ -3,49 +3,36 @@ class Solution:
         
         if len(connections) < n-1:
             return -1
-        def dfs(i, adj_lst, visited):
+        
+        def dfs(i, visted, adj_lst):
             
             if i in visited:
                 return
             visited.add(i)
             for j in adj_lst[i]:
-                dfs(j, adj_lst, visited)
+                dfs(j, visited, adj_lst)
             
-            
-#             queue = [i]
-            
-#             while len(queue) > 0:
-#                 val = queue.pop(0)
-#                 visited.add(val)
-                
-#                 for j in adj_lst[val]:
-#                     if j not in visited:
-#                         queue.append(j) 
-#             return visited
-        
-        
+  
         adj_lst = dict()
         for i in range(n):
             adj_lst[i] = []
             
-        for i in range(len(connections)):
-            adj_lst[connections[i][0]].append(connections[i][1])
-            adj_lst[connections[i][1]].append(connections[i][0])
-        
+        for i, j in connections:
+            adj_lst[i].append(j)
+            adj_lst[j].append(i)
+            
         visited = set()
         count = 0
-        for i in range(n):
+        for i in adj_lst.keys():
             if i not in visited:
-                dfs(i, adj_lst, visited)
+                dfs(i, visited, adj_lst)
                 count += 1
                 
-        
-        if count == 1:
-            return 0
-        
-        diff = len(connections) - count 
+        diff = len(connections) - count
+        print(count, len(connections))
 
-        return count-1
+
+        return count - 1
+        
                 
-            
         
