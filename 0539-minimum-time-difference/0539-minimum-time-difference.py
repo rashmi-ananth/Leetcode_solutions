@@ -1,23 +1,23 @@
 class Solution:
     def findMinDifference(self, timePoints: List[str]) -> int:
         
-        times = []
+        minutes = []
         
-        for i in range(len(timePoints)):
-            hours, mins = timePoints[i].split(':')
-            times.append((int(hours) * 60) + int(mins))
+        for i in timePoints:
+            hour, mins = i.split(':')
+            total_mins = int(mins) + (60 * int(hour))
+            minutes.append(total_mins)
             
-        times.sort()
+        minutes.sort()
+        min_diff = 60 * 24
         
-        min_time = 60 * 24
-        for i in range(len(times) - 1):
-            curr_min = times[i+1] - times[i]
-            min_time = min(min_time, curr_min)
-            
+        for i in range(1, len(minutes)):
+            diff = minutes[i] - minutes[i-1]
+            min_diff = min(min_diff, diff)
         
-            
-        min_time = min(min_time, (60*24 - times[-1]) + times[0])
-        return min_time
-            
-            
-            
+        last_diff = ((60 * 24) - minutes[-1]) + minutes[0]
+        min_diff = min(min_diff, last_diff)
+        
+        return min_diff
+        
+        
