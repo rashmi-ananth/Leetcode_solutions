@@ -7,34 +7,51 @@
 class Solution:
     def reverseOddLevels(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         
+        # bfs
+        # check if there are at least 2 nodes in row
+        # pop the ends and switch the values
+        # add children
         
-        queue = [root]
-        queue2 = []
-        odd = False
+        if root == None or root.left == None:
+            return root
         
-        while len(queue) > 0:
+        queue = [root.left, root.right]
+        odd = True
+        
+        
+        while len(queue) != 0:
             if odd:
-                l, r = 0, len(queue) - 1
+            
+                l = 0
+                r = len(queue) - 1
                 while l < r:
                     queue[l].val, queue[r].val = queue[r].val, queue[l].val
                     l += 1
                     r -= 1
-                    
-            for i in range(len(queue)):
+
+            length = len(queue)
+            for i in range(length):
                 node = queue.pop(0)
                 if node.left != None:
                     queue.append(node.left)
-                if node.right != None:
                     queue.append(node.right)
-                    
             odd = not odd
             
-
- 
-                
-                
         return root
                 
-                
-                
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
         
