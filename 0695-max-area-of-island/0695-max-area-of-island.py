@@ -1,20 +1,24 @@
 class Solution:
     def maxAreaOfIsland(self, grid):
         
-        def dfs(r, c):
-            if r < 0 or r >= len(grid) or c < 0 or c >= len(grid[r]):
+        def dfs(i, j):
+            if i < 0 or j < 0 or i >= len(grid) or j >= len(grid[0]):
                 return 0
-            if grid[r][c] == 0:
+            
+            if grid[i][j] == 0:
                 return 0
-
-            grid[r][c] = 0
-            return 1 + dfs(r - 1, c) + dfs(r, c - 1) + dfs(r + 1, c) + dfs(r, c + 1) 
-
-        # t: O(rc) s: O(1)
-        max_area = 0
-        for r in range(len(grid)):
-            for c in range(len(grid[r])):
-                if grid[r][c] == 1:
-                    max_area = max(max_area, dfs(r, c))
-        return max_area
+            grid[i][j] = 0
+            
+            return 1 + dfs(i +1, j) + dfs(i-1, j) + dfs(i, j+1) + dfs(i, j-1)
     
+
+    
+        max_area = 0
+    
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j] == 1:
+                    max_area = max(max_area, dfs(i, j))
+                    
+                    
+        return max_area
