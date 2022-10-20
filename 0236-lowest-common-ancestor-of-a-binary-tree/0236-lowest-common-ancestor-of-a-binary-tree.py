@@ -14,14 +14,12 @@ class Solution:
         if root == p or root == q:
             return root
         
-        node1 =  self.lowestCommonAncestor(root.left, p, q)
-        node2 =  self.lowestCommonAncestor(root.right, p, q)
+        node = self.lowestCommonAncestor(root.left, p, q)
+        node2 = self.lowestCommonAncestor(root.right, p, q)
         
-        if node1 != None and node2 != None:
+        if node != None and node2 != None:
             return root
-        if node1 != None:
-            return node1
+        if node != None:
+            return node
         else:
             return node2
-        
-        
