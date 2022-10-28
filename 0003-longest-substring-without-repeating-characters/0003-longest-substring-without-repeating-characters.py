@@ -15,7 +15,6 @@ class Solution:
             else:
                 
                 start = dictionary[s[i]] + 1
-                
                 curr_len = 0
                 dictionary[s[i]] = i
                         
