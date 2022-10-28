@@ -3,6 +3,9 @@ from heapq import heapify, heappush, heappop
 class Solution:
     def minMeetingRooms(self, intervals: List[List[int]]) -> int:
         
+        # time: O(nlogn)
+        # Space: O(n)
+        
         count = 1
         intervals.sort()
         h = [intervals[0][1]]
