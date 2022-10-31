@@ -1,6 +1,9 @@
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         
+        # time: O(nlogn)
+        # space: O(n)
+        
         intervals.sort()
         return_lst = []
         
@@ -18,21 +21,4 @@ class Solution:
         return_lst.append([start, end])
         return return_lst
                 
-        
-        
-        
-# start = 8
-# end = 10
-# return_lst = [[1,6],[8,10]]
-        
-#         ____ 
-#               ______
-            
-        
-#         _____
-#             _____
-            
-        
-#         _____________
-#             ______
-        
+    
