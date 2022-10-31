@@ -1,6 +1,8 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         
+        # Time: O(n^2)
+        # Space: O(N)
         
         return_lst = []
         nums.sort()
