@@ -1,5 +1,8 @@
 from heapq import heapify, heappush, heappop
 class Leaderboard:
+    
+    # Time: O(NlogN)
+    # Space: O(N + K)
 
     def __init__(self):
         self.lb = defaultdict(int)
