@@ -1,6 +1,8 @@
 class Solution:
     def topKFrequent(self, words: List[str], k: int) -> List[str]:
         
+        # Time: O(nlogn)
+        # Space: O(N)
         freq = defaultdict(int)
         
         for i in range(len(words)):
