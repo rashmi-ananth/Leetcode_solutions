@@ -12,12 +12,15 @@ class Leaderboard:
         h = []
         heapify(h)
         
+        
         for v in self.lb.values():
-            heappush(h, -v)
+            heappush(h, v)
+            if len(h) > K:
+                heappop(h)
         
         total = 0
         for i in range(K):
-            total += - heappop(h)
+            total += heappop(h)
         
         return total
 
