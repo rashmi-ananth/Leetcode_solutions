@@ -2,9 +2,10 @@ class Solution:
     def decodeString(self, s: str) -> str:
         
         
-        # 2[abc]3[cd]ef
-        # [2 1 ]
-        # abc
+        # Time: O(maxk * N)
+        # Space: O(n)
+        
+
         
         stack = []
         i = 0
