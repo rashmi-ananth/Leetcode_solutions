@@ -1,6 +1,9 @@
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
         
+        # Time: O(n)
+        # Space: O(n)
+        
     
         arr = [nums[0]]
         
