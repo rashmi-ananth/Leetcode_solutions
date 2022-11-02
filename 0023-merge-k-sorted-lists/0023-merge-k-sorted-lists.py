@@ -7,6 +7,9 @@ from heapq import heapify, heappush, heappop
 class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
         
+        # Time: O(nlogk)
+        # Space: O(K)
+        
         if len(lists) == 0:
             return None
         
@@ -31,21 +34,3 @@ class Solution:
             curr = curr.next
 
         return dummy.next
-        
-        
-#         lst = []
-#         for i in range(len(lists)):
-#             curr = lists[i]
-#             while curr != None:
-#                 lst.append(curr.val)
-#                 curr = curr.next
-                
-#         lst.sort()
-#         dummy = ListNode()
-#         curr = dummy
-#         for i in range(len(lst)):
-#             curr.next = ListNode(lst[i])
-#             curr = curr.next
-        
-#         return dummy.next
-        
