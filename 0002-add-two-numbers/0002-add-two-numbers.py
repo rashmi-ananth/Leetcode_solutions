@@ -11,6 +11,9 @@ class Solution:
         # add the two
         # create reversed linked list of sum
         
+        # Time: O(max(m,n))
+        # Space: O(max(M, N) + 1)
+        
         curr1 = l1
         num1 = 0
         factor = 1
