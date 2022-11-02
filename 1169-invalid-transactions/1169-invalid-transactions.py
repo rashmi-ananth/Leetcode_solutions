@@ -1,59 +1,33 @@
 class Solution:
     def invalidTransactions(self, transactions: List[str]) -> List[str]:
         
+        # {n:[[t, city, idx]]}
         
-#     dict: name:[(idx, [t, city]), (idx, [t, city])]
-        
-#         set: 0,2,5 - result idx
-
-        
-        result_idx = set()
-        visited_dictionary = defaultdict(list)
+        stored_txns = defaultdict(list)
+        invalid = set()
         
         for i in range(len(transactions)):
-            name, t, amt, city = transactions[i].split(',')
+            n, t, a, c = transactions[i].split(',')
+            if int(a) > 1000:
+                invalid.add(i)
+             
             
-            if int(amt) > 1000:
-                result_idx.add(i)
-                
-            for item in visited_dictionary[name]:
-                t2 = item[1][0]
-                city2 = item[1][1]
-                
-                if city != city2 and abs(int(t)-t2) <= 60:
-                    result_idx.add(i)
-                    result_idx.add(item[0])
-            visited_dictionary[name].append((i,[int(t), city]))
+            for time, city, idx in stored_txns[n]:
+                if city != c:
+                    if abs(int(t) - time) <= 60:
+                        invalid.add(idx)
+                        invalid.add(i)
             
+            stored_txns[n].append([int(t), c, i])
             
         
-        result = []
-        for i in result_idx:
-            result.append(transactions[i])
-    
-        return result
-            
-            
-        
-            
-                    
-                    
-            
-                
-                
-            
-            
-            
-            
-            
-
-        
-
-
+        return_lst = []
+        for idx in invalid:
+            return_lst.append(transactions[idx])
 
             
-            
-                
+        return return_lst
         
-        
+       
+
         
