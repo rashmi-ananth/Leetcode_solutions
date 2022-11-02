@@ -29,16 +29,17 @@ class LRUCache:
         node.prev.next = node.next
         node.next.prev = node.prev
         
-        prev_node = self.MRU.prev
-        self.MRU.prev = node
-        node.next = self.MRU
-        node.prev = prev_node
-        prev_node.next = node
-        
-        self.dictionary[key] = node
+        self.add_node(node)
         
         return self.dictionary[key].val
 
+    def add_node(self, node):
+            prev_node = self.MRU.prev
+            self.MRU.prev = node
+            node.next = self.MRU
+            node.prev = prev_node
+            prev_node.next = node
+            self.dictionary[node.key] = node
 
     def put(self, key: int, value: int) -> None:
         # if key in dict
@@ -47,14 +48,10 @@ class LRUCache:
             node.prev.next = node.next
             node.next.prev = node.prev
             
-            prev_node = self.MRU.prev
-            self.MRU.prev = node
-            node.next = self.MRU
-            node.prev = prev_node
-            prev_node.next = node
+            self.add_node(node)
             
             node.val = value
-            self.dictionary[key] = node
+            
             return
         else:
             if self.counter == self.capacity:
@@ -69,13 +66,7 @@ class LRUCache:
                 self.counter += 1
                 
             node = Node(None, None, key, value)
-            prev_node = self.MRU.prev
-            self.MRU.prev = node
-            node.next = self.MRU
-            node.prev = prev_node
-            prev_node.next = node
-
-            self.dictionary[key] = node
+            self.add_node(node)
             
         
 
