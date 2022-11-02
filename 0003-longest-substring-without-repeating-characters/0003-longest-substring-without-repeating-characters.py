@@ -15,7 +15,7 @@ class Solution:
             else:
                 start = dictionary[s[i]] + 1
                 dictionary[s[i]] = i
-                curr_len = i - start + 1
+                
         
         
         max_len = max(max_len, curr_len)
