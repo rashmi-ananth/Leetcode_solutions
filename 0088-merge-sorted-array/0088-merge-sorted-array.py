@@ -4,6 +4,9 @@ class Solution:
         Do not return anything, modify nums1 in-place instead.
         """
         
+        # Time: O(M + N)
+        # Space: Time: O(M)
+        
         nums1_copy = []
         for i in range(m):
             nums1_copy.append(nums1[i])
@@ -23,8 +26,6 @@ class Solution:
                     idx2 += 1
             else:
                 break
-         
-        # 1 2 2 3 
         
         if idx1 < m:
             while idx1 < m:
