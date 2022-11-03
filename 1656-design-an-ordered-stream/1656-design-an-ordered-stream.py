@@ -10,7 +10,7 @@ class OrderedStream:
         self.arr[idKey-1] = value
         return_arr = []
         if idKey-1 == self.ptr:
-            while self.ptr < self.n and self.arr[self.ptr] != None:
+            while self.ptr < self.n and self.arr[self.ptr]:
                 return_arr.append( self.arr[self.ptr])
                 self.ptr += 1
         
